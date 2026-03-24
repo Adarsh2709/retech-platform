@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Estimate | ReTech</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="price-page">
+    <canvas id="particles-canvas"></canvas>
+    <div class="page-transition"></div>
+ 
+    <nav>
+        <div class="logo">RETECH</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sell.html">Sell Device</a></li>
+            <li><a href="technician.html">Technician</a></li>
+            <li><a href="price.html" class="active">Pricing</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
+    </nav>
+ 
+    <main class="container" style="padding: 10rem 0 5rem; max-width: 1000px;">
+        <div class="ui-panel reveal" style="padding: 4rem 2rem; text-align: center; margin-bottom: 3rem;">
+            <span class="status-badge" style="margin-bottom: 2rem;">Evaluation Result</span>
+            <h1 style="margin-bottom: 3rem; text-transform: uppercase; letter-spacing: 2px;">Projected <span style="color: var(--primary);">Lifecycle Yield</span></h1>
+            
+            <div class="result-grid" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; text-align: left;">
+                <!-- Left: Distribution -->
+                <div class="ui-card" style="padding: 2.5rem;">
+                    <h3 style="font-size: 0.9rem; text-transform: uppercase; color: var(--text-dim); margin-bottom: 1.5rem;">Financial Breakdown</h3>
+                    
+                    <div style="display: flex; justify-content: space-between; padding: 1rem 0; font-size: 0.9rem;">
+                        <span>Projected Market Yield</span>
+                        <span id="base-price" style="font-weight: 700;">₹0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 1rem 0; font-size: 0.9rem; color: #ef4444;">
+                        <span>Hardware Restoration</span>
+                        <span id="repair-cost" style="font-weight: 700;">- ₹0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 1rem 0; font-size: 0.9rem; color: var(--secondary); font-weight: 600;">
+                        <span>Eco-Incentive Bonus</span>
+                        <span id="eco-bonus">+ ₹0</span>
+                    </div>
+                    
+                    <div class="section-divider"></div>
+                    
+                    <div style="display: flex; justify-content: space-between; padding: 1rem 0; font-size: 1.5rem; font-weight: 800; color: var(--primary);">
+                        <span>Final Recovery Offer</span>
+                        <span id="final-price">₹0</span>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid var(--primary);">
+                        <p style="font-size: 0.75rem; color: var(--text-dim); line-height: 1.4;">Research Note: This value is a concept projection based on current material salvage models and part-harvesting data.</p>
+                    </div>
+                </div>
+
+                <!-- Right: Score -->
+                <div class="ui-card" style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <div style="position: relative; width: 150px; height: 150px; margin-bottom: 1.5rem;">
+                        <svg style="transform: rotate(-90deg); width: 100%; height: 100%;" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="6"></circle>
+                            <circle id="score-meter" cx="50" cy="50" r="45" fill="none" stroke="var(--primary)" stroke-width="6" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="283" style="transition: stroke-dashoffset 1s ease;"></circle>
+                        </svg>
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                            <span id="score-val" style="font-family: 'Orbitron'; font-size: 2.5rem; font-weight: 900; line-height: 1; display: block;">0</span>
+                            <small style="font-size: 0.5rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim);">Health</small>
+                        </div>
+                    </div>
+                    
+                    <h3 id="health-status" style="font-size: 1.1rem; margin-bottom: 0.5rem; text-align: center;">Analyzing...</h3>
+                    <p id="health-desc" style="font-size: 0.8rem; color: var(--text-dim); text-align: center; margin-bottom: 2rem;">Calculating environmental yield...</p>
+
+                    <div class="ui-btn-group" style="width: 100%; display: flex; flex-direction: column; gap: 1rem; padding: 15px;">
+                        <button class="btn btn-primary" onclick="acceptOffer()" style="width: 100%; border-radius: 50px;">Accept Recovery Offer</button>
+                        <button class="btn btn-outline" style="width: 100%; border-radius: 50px;" onclick="location.href='sell.html'">Restart Evaluation Flow</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-card" style="margin-top: 3rem; display: flex; align-items: center; gap: 20px; padding: 1.5rem 2.5rem;">
+                 <i class="fas fa-leaf" style="font-size: 1.5rem; color: var(--secondary);"></i>
+                 <div style="text-align: left;">
+                     <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--secondary); letter-spacing: 1px;">Environmental Impact</h4>
+                     <p style="font-size: 0.9rem; color: var(--text-main);"><span id="co2-saved" style="font-weight: 800;">0</span>kg CO2 offset and <span id="water-saved" style="font-weight: 800;">0</span>L hazardous waste prevented.</p>
+                 </div>
+            </div>
+        </div>
+    </main>
+ 
+    <footer class="glass" style="margin-top: 4rem; text-align: center; padding: 4rem 0;">
+        <p>&copy; 2026 ReTech Platform. Futurism in Sustainability.</p>
+    </footer>
+ 
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const score = parseFloat(localStorage.getItem('retech_score')) || 0;
+            const category = localStorage.getItem('retech_category') || 'mobile';
+            updateUI(score, category);
+        });
+ 
+        function updateUI(score, category) {
+            const meter = document.getElementById('score-meter');
+            const scoreVal = document.getElementById('score-val');
+            const circumference = 2 * Math.PI * 45;
+ 
+            // Animate Score
+            let current = 0;
+            const interval = setInterval(() => {
+                current += 2;
+                if (current > score) current = score;
+                scoreVal.innerText = Math.floor(current);
+                const offset = circumference - (current / 100) * circumference;
+                meter.style.strokeDashoffset = offset;
+                if (current >= score) clearInterval(interval);
+            }, 30);
+ 
+            // Animate Prices
+            const multiplier = category === 'laptop' ? 300 : 200;
+            const base = score * multiplier;
+            const repair = (100 - score) * (multiplier * 0.25);
+            const bonus = 200; // Small eco-incentive
+            
+            // New Capped Payout Logic (User Incentive Model)
+            // Range: ₹800 to ₹2,000 based on health score
+            const final = 800 + (score / 100) * 1200;
+
+            animateValue("base-price", 0, base, 1500, "₹");
+            animateValue("repair-cost", 0, repair, 1500, "- ₹");
+            animateValue("eco-bonus", 0, bonus, 1500, "+ ₹");
+            animateValue("final-price", 0, final, 1500, "₹");
+            
+            // Stats
+            document.getElementById('co2-saved').innerText = (score * 0.4).toFixed(1);
+            document.getElementById('water-saved').innerText = (score * 12).toFixed(0);
+ 
+            // Status Update
+            const statusEl = document.getElementById('health-status');
+            const descEl = document.getElementById('health-desc');
+ 
+            if (score > 80) {
+                statusEl.innerText = "Premium Asset";
+                statusEl.style.color = "var(--secondary)";
+                descEl.innerText = "Exceptional condition. High refurbishment yield.";
+            } else if (score > 50) {
+                statusEl.innerText = "Sustainable Recovery";
+                statusEl.style.color = "var(--primary)";
+                descEl.innerText = "Viable components. Scheduled for restoration.";
+            } else {
+                statusEl.innerText = "Scrap Lifecycle";
+                statusEl.style.color = "#ef4444";
+                descEl.innerText = "Material recovery optimized for eco-safety.";
+            }
+        }
+ 
+        function animateValue(id, start, end, duration, prefix = "") {
+            const obj = document.getElementById(id);
+            if (!obj) return;
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const val = Math.floor(progress * (end - start) + start);
+                obj.innerText = prefix + val.toLocaleString();
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+ 
+        function acceptOffer() {
+            window.showToast("Offer Accepted! Initiating Protocol...");
+            setTimeout(() => {
+                window.location.href = 'technician.html';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Device | ReTech</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="sell-page">
+    <canvas id="particles-canvas"></canvas>
+    <div class="page-transition"></div>
+
+    <nav>
+        <div class="logo">RETECH</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sell.html" class="active">Sell Device</a></li>
+            <li><a href="technician.html">Technician</a></li>
+            <li><a href="price.html">Pricing</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
+    </nav>
+
+    <main class="sell-container">
+        <header class="sell-header reveal">
+            <span class="status-badge">Experimental AI Assessment</span>
+            <h1>Guided <span style="color: var(--primary);">Research Evaluation</span></h1>
+            <p style="margin-top: 1rem;">Testing our diagnostic engine for autonomous hardware feature extraction and lifecycle prediction.</p>
+            
+            <div class="ui-panel reveal" style="padding: 3rem; margin-top: 2rem;">
+                <div class="progress-wrapper" style="margin: 0 auto;">
+                    <div class="progress-container">
+                        <div class="progress-bar" id="step-progress"></div>
+                    </div>
+                    <div class="steps-labels">
+                        <span class="step-label active">Selection</span>
+                        <span class="step-label">Imaging</span>
+                        <span class="step-label">Diagnostics</span>
+                        <span class="step-label">Insight</span>
+                    </div>
+                </div>
+
+                <!-- Step 1: Selection -->
+                <div id="step-1" class="sell-step active" style="margin-top: 3rem;">
+                    <div class="selection-grid">
+                        <div class="ui-card selection-card" onclick="nextStep(2, 'mobile')">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Mobile Asset</h3>
+                            <p>Phones & Tablets</p>
+                        </div>
+                        <div class="ui-card selection-card" onclick="nextStep(2, 'laptop')">
+                            <i class="fas fa-laptop"></i>
+                            <h3>Compute Unit</h3>
+                            <p>Workstations & Laptops</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Upload -->
+                <div id="step-2" class="sell-step" style="margin-top: 3rem;">
+                    <h2 class="step-title">Hardware Imaging</h2>
+                    <div class="upload-area ui-card" id="drop-zone" style="border-style: dashed;">
+                        <div class="upload-placeholder">
+                            <i class="fas fa-camera-retro upload-icon"></i>
+                            <p>Transmit device imagery for AI feature extraction</p>
+                            <span style="font-size: 0.7rem; color: var(--text-dim);">Supported: JPG, PNG, HEIC</span>
+                        </div>
+                        <input type="file" id="file-input" hidden accept="image/*">
+                        <div id="preview-container" hidden>
+                            <img id="image-preview" src="" alt="Preview">
+                            <div class="ai-diagnostic-overlay" id="ai-scanner">
+                                <div class="pulse-ring"></div>
+                                <div class="data-points"></div>
+                                <div class="scan-status">EXTRACTING HARDWARE REVISION...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-actions" style="justify-content: center; margin-top: 3rem;">
+                        <div class="ui-btn-group" style="width: 100%; display: flex; justify-content: space-between; padding: 15px;">
+                            <button class="btn btn-outline" style="flex: 1; margin: 0 10px; border-radius: 8px;" onclick="prevStep(1)">
+                                <i class="fas fa-arrow-left"></i> Return to Selection
+                            </button>
+                            <button class="btn btn-primary" style="flex: 2; margin: 0 10px; border-radius: 8px;" onclick="simulateAI()" id="continue-btn" disabled>
+                                Execute Diagnostics
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Condition -->
+                <div id="step-3" class="sell-step" style="margin-top: 3rem;">
+                    <h2 class="step-title">Device Condition</h2>
+                    <div class="ui-card" style="padding: 3rem;">
+                        <div class="form-row" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <label style="margin-bottom: 0;">Power Observation: Is it operational?</label>
+                            <label class="switch">
+                                <input type="checkbox" id="power-on" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="form-row" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <label style="margin-bottom: 0;">Display Integrity: Any cracks/pixels?</label>
+                            <label class="switch">
+                                <input type="checkbox" id="screen-ok" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="form-row" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <label style="margin-bottom: 0;">Energy Unit: Battery health issues?</label>
+                            <label class="switch">
+                                <input type="checkbox" id="battery-issue">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="form-group" style="margin-top: 3rem;">
+                            <label>Physical Degradation Level: <span id="damage-val" style="color: var(--primary); font-family: 'Orbitron';">0</span>%</label>
+                            <input type="range" id="damage-slider" min="0" max="100" value="0" class="range-slider">
+                        </div>
+                    </div>
+                    <div class="step-actions" style="justify-content: center; margin-top: 3rem;">
+                        <div class="ui-btn-group" style="width: 100%; display: flex; justify-content: space-between; padding: 12px;">
+                            <button class="btn btn-outline" style="flex: 1; border-radius: 50px;" onclick="prevStep(2)">
+                                <i class="fas fa-arrow-left"></i> Back
+                            </button>
+                            <button class="btn btn-primary" style="flex: 2; border-radius: 50px;" onclick="calculateScore()">
+                                Generate Recovery Score <i class="fas fa-microchip"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Step 4: Result (Hidden initially, will redirect to price.html) -->
+    </main>
+
+    <footer class="glass">
+        <p>&copy; 2026 ReTech Platform. Futurism in Sustainability.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        let currentStep = 1;
+        let selectedCategory = '';
+
+        function nextStep(step, data = null) {
+            if (data) selectedCategory = data;
+            
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+            currentStep = step;
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            
+            updateProgress();
+        }
+
+        function prevStep(step) {
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+            currentStep = step;
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progress = ((currentStep - 1) / 3) * 100;
+            document.getElementById('step-progress').style.width = `${progress}%`;
+            
+            const labels = document.querySelectorAll('.step-label');
+            labels.forEach((l, i) => {
+                if (i < currentStep) l.classList.add('active');
+                else l.classList.remove('active');
+            });
+        }
+
+        // --- File Upload Logic ---
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const previewImg = document.getElementById('image-preview');
+        const previewCont = document.getElementById('preview-container');
+        const continueBtn = document.getElementById('continue-btn');
+
+        dropZone.onclick = () => fileInput.click();
+
+        fileInput.onchange = (e) => handleFiles(e.target.files);
+
+        dropZone.ondragover = (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--primary)'; };
+        dropZone.ondragleave = () => dropZone.style.borderColor = 'var(--glass-border)';
+        dropZone.ondrop = (e) => {
+            e.preventDefault();
+            handleFiles(e.dataTransfer.files);
+        };
+
+        function handleFiles(files) {
+            if (files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewImg.src = e.target.result;
+                    previewCont.hidden = false;
+                    dropZone.querySelector('.upload-placeholder').hidden = true;
+                    continueBtn.disabled = false;
+                };
+                reader.readAsDataURL(files[0]);
+            }
+        }
+
+        function simulateAI() {
+            const scanner = document.getElementById('ai-scanner');
+            scanner.style.display = 'flex';
+            continueBtn.disabled = true;
+
+            const statuses = [
+                'FEATURE EXTRACTION ACTIVE...',
+                'MATCHING HARDWARE PATTERNS...',
+                'CALCULATING CONFIDENCE SCORE...',
+                'EVALUATION LOGIC COMPLETE'
+            ];
+            
+            let i = 0;
+            const interval = setInterval(() => {
+                scanner.querySelector('.scan-status').innerText = statuses[i];
+                i++;
+                if (i >= statuses.length) {
+                    clearInterval(interval);
+                    setTimeout(() => nextStep(3), 800);
+                }
+            }, 800);
+        }
+
+        // --- Condition Logic ---
+        const damageSlider = document.getElementById('damage-slider');
+        const damageVal = document.getElementById('damage-val');
+        damageSlider.oninput = (e) => damageVal.innerText = e.target.value;
+
+        function calculateScore() {
+            let score = 50; // Base score
+            
+            if (document.getElementById('power-on').checked) score += 30;
+            if (document.getElementById('screen-ok').checked) score += 20;
+            if (document.getElementById('battery-issue').checked) score -= 15;
+            
+            const damage = parseInt(damageSlider.value);
+            score -= (damage * 0.4);
+
+            score = Math.max(0, Math.min(100, score));
+            
+            // Store in localStorage for Price Page
+            localStorage.setItem('retech_score', score);
+            localStorage.setItem('retech_category', selectedCategory);
+            
+            setTimeout(() => {
+                window.location.href = 'price.html';
+            }, 1000);
+        }
+    </script>
+
+    <style>
+        .sell-container {
+            padding: 10rem 0 5rem;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .sell-header { text-align: center; margin-bottom: 5rem; }
+        .sell-header h1 { font-size: 3.5rem; text-transform: uppercase; margin-top: 0.5rem; }
+
+        .progress-wrapper {
+            margin: 4rem auto 0;
+            max-width: 600px;
+        }
+        .progress-container {
+            height: 4px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+            box-shadow: var(--soft-glow);
+        }
+        .steps-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+        .step-label {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+        }
+        .step-label.active { color: var(--primary); font-weight: 700; }
+
+        .sell-step { display: none; }
+        .sell-step.active { display: block; animation: fadeInUp 0.6s ease-out; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-title { margin-bottom: 3rem; text-align: center; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        .selection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+        .selection-card {
+            text-align: center; cursor: pointer; padding: 4rem 2rem;
+            background: var(--glass);
+        }
+        .selection-card i { font-size: 3rem; margin-bottom: 1.5rem; color: var(--primary); }
+
+        .upload-area {
+            border: 1px dashed var(--glass-border);
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            background: rgba(255,255,255,0.01);
+        }
+        .upload-icon { font-size: 3rem; margin-bottom: 1.5rem; color: var(--primary); opacity: 0.8; }
+        
+        #image-preview {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .ai-diagnostic-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: none; flex-direction: column;
+            justify-content: center; align-items: center;
+            background: rgba(10, 12, 16, 0.8);
+            backdrop-filter: blur(4px);
+        }
+        .pulse-ring {
+            width: 80px; height: 80px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        .scan-status {
+            margin-top: 2rem;
+            font-family: 'Orbitron'; font-size: 0.8rem;
+            letter-spacing: 2px; color: var(--primary);
+        }
+
+        .step-actions {
+            margin-top: 4rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Diagnostic Form */
+        .condition-form { padding: 3rem; }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .form-row label { font-size: 0.95rem; color: var(--text-main); text-transform: none; margin: 0; }
+
+        /* Custom Toggles Refined */
+        .switch { position: relative; display: inline-block; width: 50px; height: 26px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(255,255,255,0.05); transition: .4s;
+            border: 1px solid var(--glass-border);
+        }
+        .slider:before {
+            position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px;
+            background-color: var(--text-dim); transition: .4s;
+        }
+        input:checked + .slider { background-color: var(--primary); border-color: var(--primary); }
+        input:checked + .slider:before { transform: translateX(24px); background-color: #0d1117; }
+        .slider.round { border-radius: 34px; }
+        .slider.round:before { border-radius: 50%; }
+
+        .range-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            outline: none;
+            margin-top: 1rem;
+        }
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            box-shadow: var(--soft-glow);
+        }
+
+        @media (max-width: 600px) {
+            .selection-grid { grid-template-columns: 1fr; }
+            .sell-header h1 { font-size: 2.2rem; }
+            .steps-labels { display: none; }
+            .condition-form { padding: 1.5rem; }
+        }
+    </style>
+</body>
+</html>
+```
