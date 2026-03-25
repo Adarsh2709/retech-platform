@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,39 +8,42 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
+    <!-- Global Full-Screen Background CSS applied directly to body -->
+
     <!-- Particle Background -->
     <canvas id="particles-canvas"></canvas>
 
     <!-- Page Transition -->
     <div class="page-transition"></div>
 
-    <!-- Navigation -->
     <nav>
         <div class="logo">RETECH</div>
+
         <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="sell.html">Sell Device</a></li>
-            <li><a href="technician.html">Technician</a></li>
-            <li><a href="price.html">Pricing</a></li>
-            <li><a href="admin.html">Admin</a></li>
+            <li><a class="active" href="#">HOME</a></li>
+            <li><a href="sell.html">SELL DEVICE</a></li>
+            <li><a href="technician.html">TECHNICIAN</a></li>
+            <li><a href="price.html">PRICING</a></li>
+            <li><a href="admin.html">ADMIN</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section -->
     <header class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <span class="status-badge reveal" style="margin-bottom: 1.5rem;">Concept Validation Phase</span>
-                <h1 class="reveal">Building a Smarter<br>Way to <span style="color: var(--primary);">Recover Value</span></h1>
-                <p class="reveal" style="transition-delay: 0.2s; max-width: 650px; margin: 1.5rem auto 3rem; font-size: 1.1rem; color: var(--text-dim);">
-                    An experimental infrastructure platform designed to power the circular economy through AI-assisted device lifecycle management.
-                </p>
-                <div class="hero-btns reveal" style="transition-delay: 0.4s; margin-top: 3.5rem; display: flex; gap: 1.5rem; justify-content: center; align-items: center;">
-                    <a href="sell.html" class="btn btn-primary">Try Prototype Flow <i class="fas fa-chevron-right" style="font-size: 0.8rem;"></i></a>
-                    <a href="#how-it-works" class="btn btn-outline">Explore Recovery Model</a>
-                </div>
-            </div>
+        <div>
+            Concept Validation Phase
+
+            <h1>
+                BUILDING A SMARTER<br>
+                WAY TO <span>RECOVER VALUE</span>
+            </h1>
+
+            An experimental infrastructure platform designed to power the circular economy through AI-assisted
+            device lifecycle management.
+
+            <a href="sell.html" class="btn btn-primary">TRY PROTOTYPE FLOW</a>
+            <a href="#how-it-works" class="btn btn-outline">EXPLORE RECOVERY MODEL</a>
         </div>
     </header>
 
@@ -74,26 +78,38 @@
         <h2 class="section-title reveal">How It <span style="color: var(--secondary);">Works</span></h2>
         <div class="steps-grid">
             <div class="ui-card reveal" style="padding: 2.5rem; text-align: center;">
-                <div class="step-num" style="background: var(--primary); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-weight: 800;">01</div>
-                <i class="fas fa-upload icon" style="font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
+                <div class="step-num"
+                    style="background: var(--primary); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-weight: 800;">
+                    01</div>
+                <i class="fas fa-upload icon"
+                    style="font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
                 <h3>Asset Registration</h3>
                 <p>Provide primary device specifications and photographic data.</p>
             </div>
             <div class="ui-card reveal" style="padding: 2.5rem; text-align: center;">
-                <div class="step-num" style="background: var(--primary); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-weight: 800;">02</div>
-                <i class="fas fa-microchip icon" style="font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
+                <div class="step-num"
+                    style="background: var(--primary); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-weight: 800;">
+                    02</div>
+                <i class="fas fa-microchip icon"
+                    style="font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
                 <h3>AI Diagnostic</h3>
                 <p>Experimental engine analyzes condition and calculates projected yield.</p>
             </div>
             <div class="ui-card reveal" style="padding: 2.5rem; text-align: center;">
-                <div class="step-num" style="background: var(--primary); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-weight: 800;">03</div>
-                <i class="fas fa-user-check icon" style="font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
+                <div class="step-num"
+                    style="background: var(--primary); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-weight: 800;">
+                    03</div>
+                <i class="fas fa-user-check icon"
+                    style="font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
                 <h3>Field Validation</h3>
                 <p>A certified agent verifies hardware integrity at your specific location.</p>
             </div>
             <div class="ui-card reveal" style="padding: 2.5rem; text-align: center;">
-                <div class="step-num" style="background: var(--primary); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-weight: 800;">04</div>
-                <i class="fas fa-wallet icon" style="font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
+                <div class="step-num"
+                    style="background: var(--primary); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-weight: 800;">
+                    04</div>
+                <i class="fas fa-wallet icon"
+                    style="font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
                 <h3>Value Recovery</h3>
                 <p>Final yield transferred upon successful verification analysis.</p>
             </div>
@@ -108,13 +124,15 @@
                 <i class="fas fa-mobile-alt cat-icon"></i>
                 <h3>Mobile Assets</h3>
                 <p>Consumer smartphones and handheld hardware.</p>
-                <a href="sell.html?cat=mobile" class="btn-link">Initialize Assessment <i class="fas fa-chevron-right"></i></a>
+                <a href="sell.html?cat=mobile" class="btn-link">Initialize Assessment <i
+                        class="fas fa-chevron-right"></i></a>
             </div>
             <div class="cat-card glass-card reveal" style="transition-delay: 0.2s;">
                 <i class="fas fa-laptop cat-icon"></i>
                 <h3>Compute Assets</h3>
                 <p>Enterprise laptops and high-performance computing units.</p>
-                <a href="sell.html?cat=laptop" class="btn-link">Initialize Assessment <i class="fas fa-chevron-right"></i></a>
+                <a href="sell.html?cat=laptop" class="btn-link">Initialize Assessment <i
+                        class="fas fa-chevron-right"></i></a>
             </div>
         </div>
     </section>
@@ -125,27 +143,23 @@
 
     <script src="script.js"></script>
     <style>
-        .hero {
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
+        /* Removed .hero inline styles to defer to global CSS theme */
+
+        .stats-section {
+            padding-top: 0;
+            margin-top: -4rem;
+            position: relative;
+            z-index: 10;
         }
-        .hero h1 {
-            font-size: 4.5rem;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-        
-        .stats-section { padding-top: 0; margin-top: -4rem; position: relative; z-index: 10; }
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             text-align: center;
             padding: 3rem;
-            background: var(--matte-finish);
+            background: transparent;
         }
+
         .stat-count {
             font-family: 'Orbitron', sans-serif;
             font-size: 2.2rem;
@@ -153,6 +167,7 @@
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
+
         .stat-label {
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -168,7 +183,8 @@
             letter-spacing: 2px;
         }
 
-        .steps-grid, .cat-grid {
+        .steps-grid,
+        .cat-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2.5rem;
@@ -183,11 +199,14 @@
             top: 20px;
             right: 30px;
         }
-        .icon, .cat-icon {
+
+        .icon,
+        .cat-icon {
             font-size: 2.5rem;
             margin-bottom: 2rem;
             color: var(--primary);
         }
+
         .cat-icon {
             color: var(--secondary);
         }
@@ -213,9 +232,16 @@
         }
 
         @media (max-width: 992px) {
-            .hero h1 { font-size: 3rem; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
         }
     </style>
 </body>
+
 </html>
