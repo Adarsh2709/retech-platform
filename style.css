@@ -580,16 +580,16 @@ label {
 
 /* ===== CUSTOM USER THEME OVERRIDES ===== */
 html,body{ margin:0; padding:0; height:100%; overflow-x:hidden; }
-body{ background:url('./background_image.jpeg') no-repeat center right fixed; background-size:cover; font-family:Arial, Helvetica, sans-serif; color:white; }
+body{ background:linear-gradient(to right, rgba(10, 12, 16, 0.95) 0%, rgba(10, 12, 16, 0.6) 40%, rgba(10, 12, 16, 0) 100%), url('./background_image.jpeg') no-repeat center right fixed; background-size:cover; font-family:Arial, Helvetica, sans-serif; color:white; }
 #particles-canvas{ position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
 nav{ height:70px; display:flex; align-items:center; justify-content:space-between; padding:0 60px; background:rgba(0,0,0,0.4); backdrop-filter:blur(10px); position:relative; z-index:20; }
 .logo{ color:#19d3c5; font-weight:bold; font-size:24px; letter-spacing:2px; }
 .nav-links{ list-style:none; display:flex; gap:40px; }
 .nav-links a{ color:white; text-decoration:none; opacity:.7; }
 .nav-links a.active{ opacity:1; border:1px solid #19d3c5; padding:6px 18px; border-radius:20px; text-transform:none; }
-.hero{ min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; position:relative; z-index:10; }
-.hero h1{ font-size:70px; line-height:1.1; text-transform:uppercase; font-family:Arial, Helvetica, sans-serif; }
+.hero{ min-height:100vh; display:flex; align-items:center; justify-content:flex-start; text-align:left; position:relative; z-index:10; padding-left: 8%; box-sizing: border-box; }
+.hero h1{ font-size:70px; line-height:1.1; text-transform:uppercase; font-family:Arial, Helvetica, sans-serif; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
 .hero span{ color:#19d3c5; }
-.btn{ padding:18px 34px; border-radius:40px; text-decoration:none; margin:20px; display:inline-block; font-weight:normal; }
+.btn{ padding:18px 34px; border-radius:40px; text-decoration:none; margin:30px 20px 20px 0; display:inline-block; font-weight:normal; }
 .btn-primary{ background:#19d3c5; color:black; border:none; }
 .btn-outline{ border:1px solid #19d3c5; color:#19d3c5; background:transparent; }
