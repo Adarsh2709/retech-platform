@@ -135,8 +135,9 @@ function initPageTransitions() {
     const transitionEl = document.querySelector('.page-transition');
     if (!transitionEl) return;
     
-    window.addEventListener('load', () => {
-        setTimeout(() => transitionEl.style.opacity = '0', 200);
+    // Reveal immediately after DOM is ready, avoiding hangs on missing images
+    setTimeout(() => {
+        transitionEl.style.opacity = '0';
         setTimeout(() => transitionEl.style.display = 'none', 600);
-    });
+    }, 100);
 }
